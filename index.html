@@ -12,7 +12,7 @@
     
     <!-- AR 场景开始 -->
     <a-scene 
-      mindar-image="imageTargetSrc: targets.mind;" 
+      mindar-image="imageTargetSrc: targets.mind; filterMinCF:0.0001; filterBeta: 0.001;" 
       color-space="sRGB" 
       renderer="colorManagement: true, physicallyCorrectLights" 
       vr-mode-ui="enabled: false" 
@@ -29,7 +29,7 @@
       <!-- 识别图绑定：targetIndex: 0 代表识别第一张图 -->
       <a-entity mindar-image-target="targetIndex: 0">
         <!-- 调用你的 3D 模型：position是位置，scale是大小，rotation是旋转 -->
-        <a-gltf-model src="#myModel" position="0 0 0" scale="0.5 0.5 0.5" rotation="0 0 0"></a-gltf-model>
+        <a-gltf-model src="#myModel" position="0 0 0" scale="0.1 0.1 0.1" rotation="0 0 0"></a-gltf-model>
       </a-entity>
       
     </a-scene>
