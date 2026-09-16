@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>我的第一个 WebAR 项目</title>
+    <!-- 引入 A-Frame 3D 引擎 -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!-- 引入 MindAR 的 AR 追踪插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    
+    <!-- AR 场景开始 -->
+    <a-scene 
+      mindar-image="imageTargetSrc: targets.mind;" 
+      color-space="sRGB" 
+      renderer="colorManagement: true, physicallyCorrectLights" 
+      vr-mode-ui="enabled: false" 
+      device-orientation-permission-ui="enabled: false">
+      
+      <!-- 预加载你的 3D 模型 -->
+      <a-assets>
+        <a-asset-item id="myModel" src="model.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- 摄像头视角 -->
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- 识别图绑定：targetIndex: 0 代表识别第一张图 -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <!-- 调用你的 3D 模型：position是位置，scale是大小，rotation是旋转 -->
+        <a-gltf-model src="#myModel" position="0 0 0" scale="0.5 0.5 0.5" rotation="0 0 0"></a-gltf-model>
+      </a-entity>
+      
+    </a-scene>
+  </body>
+</html>
